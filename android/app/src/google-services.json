@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "158991462939",
+    "project_id": "fir-connecting-b9936",
+    "storage_bucket": "fir-connecting-b9936.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158991462939:android:2f7b39092fd5682b873ebe",
+        "android_client_info": {
+          "package_name": "com.firebase.firebase_connecting"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8MCTfkHySrl7KkE5Gg9mDaCmmzFvl4eM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
