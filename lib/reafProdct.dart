@@ -33,12 +33,10 @@ class _ReadShoesState extends State<ReadShoes> {
     );
     
     final data= json.decode(result.body) as Map<String, dynamic>;
-
     data.forEach((key, value) {
       name.add(value["shoeName"]);
       price.add(value["price"]);
       image.add(value["image"]);
-      
     });
 
     setState(() {
@@ -51,7 +49,7 @@ class _ReadShoesState extends State<ReadShoes> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isLoading
-          ? CircularProgressIndicator()
+          ? const CircularProgressIndicator()
           : GridView.builder(
         itemCount: name.length,
               itemBuilder: (context, index) {
