@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -12,43 +11,42 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    shoeList();
+    super.initState();
+  }
   String title = "Settings";
-  var isLoading = true;
 
+
+  final url = "https://fir-connecting-b9936-default-rtdb.firebaseio.com/"+"shoeList.json";
   var shoeImages = [];
   var shoeName1 = [];
   var shoeName2 = [];
   var shoePrice = [];
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    shoeList();
-    super.initState();
-  }
+
 
   shoeList() async {
-    var url = "https://fir-connecting-b9936-default-rtdb.firebaseio.com/" +
-        "shoeList.json";
-    final result = await http.get(Uri.parse(url)
-    );
-    final data = json.decode(result.body) as Map<String, dynamic>;
-    data.forEach((key, value) {
-      shoeName1.add(value["shoeName1"]);
-      shoeName2.add(value["shoeName2"]);
-      shoePrice.add(value["shoePrice"]);
+    final result = await http.get(Uri.parse(url));
+    final List<dynamic> decodedData = json.decode(result.body);
+
+    // if (decodedData is List) {
+
+    decodedData.forEach((item) {
+      shoeName1.add(item["name"]);
+      shoeName2.add(item["subName"]);
+      shoePrice.add(item["price"].toString());
+      shoeImages.add(item["image"]);
     });
     setState(() {
-      isLoading=false;
     });
   }
 
   CarouselController carouselController = CarouselController();
   int currentIndex = 0;
   final List<String> imgList = [
-    'assets/images1/bg1.jpeg',
-    'assets/images1/bg2.jpeg',
-    "assets/images1/bg3.jpeg"
+
   ];
 
   @override
@@ -166,96 +164,96 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 10,
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          radius: 40,
-                          backgroundImage:
-                              AssetImage("assets/images1/nike.jpeg")),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text("Nike")
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          radius: 40,
-                          backgroundImage:
-                              AssetImage("assets/images1/adidas.jpeg")),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text("Adidas"),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          radius: 40,
-                          backgroundImage:
-                              AssetImage("assets/images1/puma.jpeg")),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text("Puma")
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        child: CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          radius: 40,
-                          backgroundImage:
-                              AssetImage("assets/images1/newbalance.jpeg"),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text("New Balance")
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          radius: 40,
-                          backgroundImage:
-                              AssetImage("assets/images1/converse.jpeg")),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text("Converse")
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // SingleChildScrollView(
+          //   scrollDirection: Axis.horizontal,
+          //   child: Row(
+          //     children: [
+          //       Padding(
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.grey,
+          //                 radius: 40,
+          //                 backgroundImage:
+          //                     AssetImage("assets/images1/nike.jpeg")),
+          //             SizedBox(
+          //               height: 5,
+          //             ),
+          //             Text("Nike")
+          //           ],
+          //         ),
+          //       ),
+          //       Padding(
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.grey,
+          //                 radius: 40,
+          //                 backgroundImage:
+          //                     AssetImage("assets/images1/adidas.jpeg")),
+          //             SizedBox(
+          //               height: 5,
+          //             ),
+          //             Text("Adidas"),
+          //           ],
+          //         ),
+          //       ),
+          //       Padding(
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.grey,
+          //                 radius: 40,
+          //                 backgroundImage:
+          //                     AssetImage("assets/images1/puma.jpeg")),
+          //             SizedBox(
+          //               height: 5,
+          //             ),
+          //             Text("Puma")
+          //           ],
+          //         ),
+          //       ),
+          //       Padding(
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: Column(
+          //           children: [
+          //             SizedBox(
+          //               child: CircleAvatar(
+          //                 backgroundColor: Colors.grey,
+          //                 radius: 40,
+          //                 backgroundImage:
+          //                     AssetImage("assets/images1/newbalance.jpeg"),
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               height: 5,
+          //             ),
+          //             Text("New Balance")
+          //           ],
+          //         ),
+          //       ),
+          //       Padding(
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.grey,
+          //                 radius: 40,
+          //                 backgroundImage:
+          //                     AssetImage("assets/images1/converse.jpeg")),
+          //             SizedBox(
+          //               height: 5,
+          //             ),
+          //             Text("Converse")
+          //           ],
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           SizedBox(
             height: 10,
           ),
@@ -302,9 +300,9 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           children: [
                             Image(image: NetworkImage(shoeImages[index]),width: 200, height: 125,),
-                            Text("${shoeName1[index]}"),
-                            Text("${shoeName2[index]}"),
-                            Text("Price ${shoePrice[index].toString()}"),
+                            Text(shoeName1[index] ??"tfggfggggy"),
+                            Text(shoeName2[index]??"hhhhhfgg"),
+                            Text(shoePrice[index].toString()??" gfg hhggvvg"),
                           ],
                         ),
                       ),

@@ -29,8 +29,12 @@ class _Home2State extends State<Home2> {
   readShoeList() async {
 
     final result=await http.get(Uri.parse(url));
-
-    final data=json.decode(result.body)as Map<String,dynamic>;
+    //
+    // final data=json.decode(result.body)as Map<String,dynamic>;
+    // data.forEach((key, value) {
+    //
+    // });
+    final data = json.decode(result.body)as Map<String, dynamic>;
     data.forEach((key, value) {
       nameA.add(value["name"]);
       nameS.add(value["subName"]);
