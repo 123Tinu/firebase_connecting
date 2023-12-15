@@ -11,4 +11,8 @@ class LoginGetx extends GetxController {
       'Name: $name\nEmail: $email', // Message
     );
   }
+  RxString size =''.obs;
+  void selectedSize(String size){
+    this.size.value=size;
+  }
 }

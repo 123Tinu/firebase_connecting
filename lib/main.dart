@@ -1,4 +1,6 @@
 
+import 'package:firebase_connecting/project/cart_page.dart';
+import 'package:firebase_connecting/project/product_details_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
