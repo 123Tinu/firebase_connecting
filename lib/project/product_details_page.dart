@@ -1,10 +1,5 @@
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:firebase_connecting/form/controller/login_getx.dart';
-import 'package:firebase_connecting/project/cart_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({super.key});
@@ -27,8 +22,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     "assets/images1/nikepr5.webp",
     "assets/images1/nikepr6.webp"
   ];
-  List<String> sizes = ['S6', 'S7', 'S8', 'S9', 'S10', "S11"];
-  final LoginGetx selectedSize = Get.put(LoginGetx());
+  List<String> sizes = ['6', '7', '8', '9', '10', "11"];
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +30,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        iconTheme: IconThemeData(
-            color: Colors.black
-        ),
+        iconTheme: IconThemeData(color: Colors.black),
         elevation: 0,
         backgroundColor: Colors.white,
         title: Container(
@@ -65,7 +57,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         actions: [
           IconButton(
             icon:
-            const Icon(Icons.shopping_cart, size: 30, color: Colors.black),
+                const Icon(Icons.shopping_cart, size: 30, color: Colors.black),
             onPressed: () {
               // Handle "Add to Cart" icon tapped
             },
@@ -194,7 +186,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color:
-                      currentIndex == entry.key ? Colors.red : Colors.grey,
+                          currentIndex == entry.key ? Colors.red : Colors.grey,
                     ),
                   ),
                 );
@@ -412,7 +404,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                             ? Colors.grey
                                             : Colors.white,
                                         borderRadius:
-                                        BorderRadius.circular(25.0),
+                                            BorderRadius.circular(25.0),
                                       ),
                                       child: Center(
                                         child: Text(
@@ -476,11 +468,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             color: Colors.white,
             child: TextButton(
                 onPressed: () {
-                  Get.snackbar(
-                    "Added To Cart", // Title
-                    "Product successfully added to cart", // Message
-                    duration: Duration(seconds: 2),
-                  );
 
                 },
                 child: const Text(

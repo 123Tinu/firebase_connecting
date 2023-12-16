@@ -84,14 +84,6 @@ class _LoginHomeState extends State<LoginHome> {
                         SizedBox(
                           height: 20,
                         ),
-                        ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-
-                                _loginController.handleLogin(_nameTextController.text, _emailTextController.text);
-                              }
-                            },
-                            child: const Text("sign in")),
                       ],
                     )),
               )

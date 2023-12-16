@@ -28,7 +28,7 @@ class _CounterAppGetXState extends State<CounterAppGetX> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(() => Text("Counter 1 : ${_counterController.count}")),
-            Obx(() =>  Text("Counter 2 : ${_counterController.count}")),
+            Obx(() => Text("Counter 2 : ${_counterController.count}")),
             const SizedBox(
               height: 20,
             ),
